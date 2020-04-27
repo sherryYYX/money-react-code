@@ -28,7 +28,7 @@
     font-size: 15px;
     /*border: 1px solid red;*/
     display: flex;
-    box-shadow: 0 0 3px rgb(0,0,0,0.25);
+    @extend %outer-shadow;
     flex-direction: row;
     > .item{
       padding: 2px;
