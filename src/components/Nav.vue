@@ -23,6 +23,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "~@/assets/style/helper.scss";
   nav{
     font-size: 15px;
     /*border: 1px solid red;*/
@@ -42,7 +43,7 @@
       }
     }
     > .item.selected{
-      color: #ff0200;
+      color: $color-highlight;
     }
 
   }
