@@ -1,49 +1,36 @@
 <template>
   <div class="tags">
     <ul class="current">
-      <li v-for="tag in dataSource" :key="tag">
-        <div class="iconWrap">
+      <li v-for="tag in dataSource" :key="tag" @click="toggle(tag)">
+        <div class="iconWrap" :class="{selected:selectedTags.indexOf(tag)>=0}">
           <Icon name="clothes"/>
         </div>
-        <span ></span>
         {{tag}}
       </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="tableware"/>
-        </div>
-        <span>食物</span>
-      </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="housing"/>
-        </div>
-        <span>住房</span>
-      </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="traffic"/>
-        </div>
-        <span>交通</span>
-      </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="shopping"/>
-        </div>
-        <span>购物</span>
-      </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="play"/>
-        </div>
-        <span>娱乐</span>
-      </li>
-      <li>
-        <div class="iconWrap">
-          <Icon name="medical"/>
-        </div>
-        <span>医疗</span>
-      </li>
+<!--      <li>-->
+<!--        <div class="iconWrap">-->
+<!--          <Icon name="tableware"/>-->
+<!--        </div>-->
+<!--        <span>食物</span>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <div class="iconWrap">-->
+<!--          <Icon name="housing"/>-->
+<!--        </div>-->
+<!--        <span>住房</span>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <div class="iconWrap">-->
+<!--          <Icon name="traffic"/>-->
+<!--        </div>-->
+<!--        <span>交通</span>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <div class="iconWrap">-->
+<!--          <Icon name="shopping"/>-->
+<!--        </div>-->
+<!--        <span>购物</span>-->
+<!--      </li>-->
       <li>
         <div class="iconWrap">
           <Icon name="add"/>
@@ -63,6 +50,14 @@
   export default class NumberPad extends Vue {
     @Prop() dataSource: string[] | undefined;
     selectedTags: string[] = [];
+    toggle(tag: string){
+      const index = this.selectedTags.indexOf(tag);
+      if(index>=0){
+        this.selectedTags.splice(index,1)
+      }else {
+        this.selectedTags.push(tag)
+      }
+    }
   }
 </script>
 
@@ -97,9 +92,6 @@
         padding: 0 0;
         position: relative;
         margin-bottom: 10px;
-        > span{
-
-        }
         .iconWrap{
           display: flex;
           border: 1px solid red;
@@ -110,6 +102,9 @@
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          &.selected{
+            background: #ffe901;
+          }
           .icon{
             height: 40px;
             width: 40px;
