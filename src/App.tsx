@@ -10,38 +10,25 @@ import Money from './pages/Money';
 import Labels from './pages/Labels';
 import Statistics from './pages/Statistics';
 import styled from 'styled-components';
+import Nav from './components/Nav';
 
 const Wrapper= styled.div`
   border: 1px solid red;
   height: 100vh;
   display:flex;
   flex-direction: column;
+  font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
 `
 
 const Main = styled.div`
-  border: 1px solid green;
   flex-grow: 1;
 `
-const Nav = styled.nav`
-border: 1px solid blue;
-  >ul{
-    border: 1px solid red;
-    display:flex;
-    flex-direction: row;
-    >li{
-      width: 33.33333%;
-      text-align: center;
-      padding: 16px;
-      
-    };
-  }
-`
+
 
 const APP =   ()=> {
   return (
     <Router>
       <Wrapper>
-
         <Main>
           <Switch>
             <Route path="/labels">
@@ -60,19 +47,7 @@ const APP =   ()=> {
           </Switch>
         </Main>
 
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/labels">labels</Link>
-            </li>
-            <li>
-              <Link to="/money">money</Link>
-            </li>
-            <li>
-              <Link to="/statistics">statistics</Link>
-            </li>
-          </ul>
-        </Nav>
+        <Nav/>
 
       </Wrapper>
     </Router>
