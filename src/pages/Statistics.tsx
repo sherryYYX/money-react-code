@@ -1,8 +1,12 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const Statistics= ()=>{
   return(
-    <div>statistics</div>
+    <Layout>
+      <div>statistics</div>
+    </Layout>
+
   )
 }
 

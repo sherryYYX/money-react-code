@@ -1,8 +1,11 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const Money= ()=>{
   return(
-    <div>money</div>
+    <Layout>
+      <div>money</div>
+    </Layout>
   )
 }
 
