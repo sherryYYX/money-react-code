@@ -11,7 +11,6 @@ box-shadow: 0 0 3px rgba(0,0,0,0.25);
       width: 33.33333%;
       text-align: center;
       padding: 16px;
-      
     };
   }
 `
