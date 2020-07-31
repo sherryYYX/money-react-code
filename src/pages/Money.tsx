@@ -49,7 +49,19 @@ const NotesStyle = styled.section`
 `
 
 const Category = styled.section`
-
+    font-size: 24px;
+  >ul{
+    display:flex;
+    background: #c4c4c4;
+    >li{
+      width: 50%;
+      text-align: center;
+      padding: 16px 0;
+      &.selected{
+        color: green;
+      }
+    }
+  }
 `
 
 const NumberPad = styled.section`
@@ -74,7 +86,7 @@ const Money= ()=>{
     </NotesStyle>
     <Category>
       <ul>
-        <li>支出</li>
+        <li className="selected">支出</li>
         <li>收入</li>
       </ul>
     </Category>
