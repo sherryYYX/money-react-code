@@ -6,6 +6,7 @@ import Icon from './Icon';
 
 
 const NavStyle = styled.nav`
+background: #fff;
 box-shadow: 0 0 3px rgba(0,0,0,0.25);
   >ul{
     display:flex;

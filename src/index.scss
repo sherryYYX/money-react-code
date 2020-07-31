@@ -18,6 +18,9 @@ body{
 button {
   font-family: inherit;
 }
+:focus{
+  outline: none;
+}
 
 svg{
   width: 32px;
