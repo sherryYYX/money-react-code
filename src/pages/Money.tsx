@@ -52,7 +52,7 @@ const Category = styled.section`
     font-size: 24px;
   >ul{
     display:flex;
-    background: #c4c4c4;
+    background: #f5f5f5;
     >li{
       width: 50%;
       text-align: center;
@@ -65,7 +65,39 @@ const Category = styled.section`
 `
 
 const NumberPad = styled.section`
-
+  display:flex;
+  flex-direction: column; 
+  > .output{
+    background: #fff;
+    font-size: 28px;
+    line-height: 72px;
+    text-align: right;
+    padding: 0 16px;
+    display:flex;
+    justify-content: space-between;
+    }
+  }
+  > .pad{
+    > button{
+    font-size: 18px;
+      background: #fff;
+      width: 25%;
+      height: 64px;
+      float: left;
+      border-radius: 4px;
+      border-width: 4px;
+      border-style: solid;
+      border-color: rgb(250, 250, 250);
+      border-image: initial;
+      &.ok{
+        float: right;
+        height: 128px;
+      }
+      &.dot{
+        width: 50%;
+      }
+    }
+  }
 `
 
 const Money= ()=>{
@@ -91,8 +123,11 @@ const Money= ()=>{
       </ul>
     </Category>
     <NumberPad>
-      <div>100</div>
-      <div>
+      <div className="output">
+        <span >¥</span>
+        100
+      </div>
+      <div className="pad clearFix">
         <button>1</button>
         <button>2</button>
         <button>3</button>
@@ -104,8 +139,8 @@ const Money= ()=>{
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>ok</button>
-        <button>0</button>
+        <button className="ok">ok</button>
+        <button className="dot">0</button>
         <button>.</button>
       </div>
     </NumberPad>
