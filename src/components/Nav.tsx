@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import React from 'react';
 import Icon from './Icon';
 
@@ -12,12 +12,20 @@ box-shadow: 0 0 3px rgba(0,0,0,0.25);
     flex-direction: row;
     >li{
       width: 33.33333%;
-      text-align: center;
-      padding: 2px 0;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        text-align: center;
+      >a{
+          padding: 2px 0;
+          display:flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; 
+          &.selected{
+          color: #03933b;
+            >svg{
+              fill:#03933b;
+            }
+          }
+        }
     };
   }
 `
@@ -26,16 +34,21 @@ const Nav = ()=>{
     <NavStyle>
       <ul>
         <li>
-          <Icon name='label'/>
-          <Link to="/labels">labels</Link>
+          <NavLink to="/labels" activeClassName="selected">
+            <Icon name='label'/>
+            labels</NavLink>
         </li>
         <li>
-          <Icon name='money'/>
-          <Link to="/money">money</Link>
+          <NavLink to="/money" activeClassName="selected">
+            <Icon name='money'/>
+               money
+            </NavLink>
         </li>
         <li>
-          <Icon name="statistics"/>
-          <Link to="/statistics">statistics</Link>
+          <NavLink to="/statistics" activeClassName="selected">
+            <Icon name="statistics"/>
+            statistics
+          </NavLink>
         </li>
       </ul>
     </NavStyle>
