@@ -2,35 +2,9 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Icon from '../components/Icon';
 import styled from 'styled-components';
+import TagsStyle from './money/TagsSection';
 
-const TagsStyle = styled.div`
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-grow: 1;
-  background: #fff;
-    padding: 12px 16px;
-  > ul{
-    margin: 0 -12px;
-    >li{
-      background: #d9d9d9;
-      border-radius: 18px;
-      display: inline-block;
-      padding: 3px 18px;
-      font-size: 14px;
-      margin: 8px 12px;
-    }
-  }
-  >button{
-    background: none;
-    border: none;
-    padding: 2px 4px;
-    border-bottom: 1px solid #333;
-    color: #666;
-    margin-top: 8px;
-  }
- `
+
 
 const NotesStyle = styled.section`
   background: #f5f5f5;
@@ -114,12 +88,6 @@ const Money= ()=>{
   return(
     <MyLayout>
       <TagsStyle>
-        <ul>
-          <li>衣服</li>
-          <li>衣服</li>
-          <li>衣服</li>
-        </ul>
-        <button>新增标签</button>
       </TagsStyle>
       <NotesStyle>
         <label>
