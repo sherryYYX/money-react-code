@@ -16,6 +16,7 @@ const Wrapper = styled.section`
     }
   }
 `
+
 const CategorySection : React.FC = ()=>{
   const [categoryList] = useState<('+'|'-')[]>(['-','+'])
   const categoryMap = {
