@@ -33,10 +33,18 @@ const Wrapper = styled.div`
   }
  `
 
-const TagsSection : React.FC=()=>{
+type Props ={
+  value: number,
+  onchange: (  selected: number)=> void
+}
+
+const TagsSection : React.FC<Props>=(props)=>{
+
+  const selectedTag = props.value
+
   const [tags, setTags] = useState<string[]>(['衣服','食物','住房','交通'])
 
-  let [selectedTag, setSelectedTag] = useState<number>(0)
+  //let [selectedTag, setSelectedTag] = useState<number>(0)
 
   const addTag = ()=>{
     let tagName = window.prompt('请输入新增标签名')
@@ -46,8 +54,8 @@ const TagsSection : React.FC=()=>{
     }
   }
 
-  const toggle = (tag:string,index:number)=>{
-    setSelectedTag(index)
+  const toggle = (tag:string, index:number)=>{
+    props.onchange(index)
     console.log(selectedTag);
   }
 
@@ -55,7 +63,7 @@ const TagsSection : React.FC=()=>{
     <Wrapper>
       <ul>
         {tags.map((tag,index)=>
-          <li key={tag} onClick={(e)=>toggle(tag,index)} className={selectedTag === index  ? 'selected':''}>{tag}</li>
+          <li key={tag} onClick={(e)=>toggle(tag,index)} className={ selectedTag === index  ? 'selected':''}>{tag}</li>
         )}
       </ul>
       <button onClick={addTag}>新增标签</button>
