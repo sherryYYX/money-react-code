@@ -9,6 +9,7 @@ import Money from './pages/Money';
 import Labels from './pages/Labels';
 import Statistics from './pages/Statistics';
 import NoMatch from './pages/NoMatch';
+import {Tag} from './components/Tag';
 
 
 
@@ -18,6 +19,9 @@ const APP =   ()=> {
   return (
     <Router>
           <Switch>
+            <Route exact path="/labels/:tag">
+              <Tag/>
+            </Route>
             <Route path="/labels">
               <Labels/>
             </Route>

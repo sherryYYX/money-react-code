@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import styled from 'styled-components';
+import {useTag} from '../../useTag';
 
 const Wrapper = styled.div`
   display:flex;
@@ -42,7 +43,7 @@ const TagsSection : React.FC<Props>=(props)=>{
 
   const selectedTag = props.value
 
-  const [tags, setTags] = useState<string[]>(['衣服','食物','住房','交通'])
+  const {tags, setTags} = useTag()
 
   //let [selectedTag, setSelectedTag] = useState<number>(0)
 
