@@ -19,7 +19,7 @@ const APP =   ()=> {
   return (
     <Router>
           <Switch>
-            <Route exact path="/labels/:tag">
+            <Route exact path="/labels/:id">
               <Tag/>
             </Route>
             <Route path="/labels">

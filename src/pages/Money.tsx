@@ -5,6 +5,7 @@ import TagsStyle from './money/TagsSection';
 import NotesStyle from './money/NotesSection';
 import Category from './money/CategorySection';
 import NumberPad from './money/NumberPadSection';
+import {createId} from '../lib/creatId';
 
 const MyLayout = styled(Layout)`
   display:flex;
@@ -15,7 +16,7 @@ const MyLayout = styled(Layout)`
 const Money= ()=>{
 
   const [selected, setSelected] = useState({
-    tag: 0,
+    tag: {id:1, tagName:"衣服"},
     note: '',
     category: '-' as ('-'|'+'),
     numberPad: 0
@@ -23,7 +24,7 @@ const Money= ()=>{
 
   return(
     <MyLayout>
-      {selected.tag}<hr/>
+      {selected.tag.tagName}<hr/>
       {selected.note}<hr/>
       {selected.category}
       <hr/>

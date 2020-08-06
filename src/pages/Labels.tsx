@@ -46,10 +46,10 @@ const Labels= ()=>{
     <Layout>
       <TagList>
         { 
-          tags.map(tag =>
-            <li  key={tag}>
-              <Link to={'/labels/'+tag}>
-                <span>{tag}</span>
+          tags.map((tag:({id:number;tagName:string})) =>
+            <li  key={tag.id}>
+              <Link to={'/labels/'+tag.id}>
+                <span>{tag.tagName}</span>
                 <Icon name='_right'/>
               </Link>
             </li>

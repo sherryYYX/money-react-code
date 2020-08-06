@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import styled from 'styled-components';
 import {useTag} from '../../useTag';
+import {createId} from '../../lib/creatId';
 
 const Wrapper = styled.div`
   display:flex;
@@ -35,8 +36,8 @@ const Wrapper = styled.div`
  `
 
 type Props ={
-  value: number,
-  onchange: (  selected: number)=> void
+  value: {id:number,tagName:string},
+  onchange: (selected: {id:number,tagName:string})=> void
 }
 
 const TagsSection : React.FC<Props>=(props)=>{
@@ -45,26 +46,24 @@ const TagsSection : React.FC<Props>=(props)=>{
 
   const {tags, setTags} = useTag()
 
-  //let [selectedTag, setSelectedTag] = useState<number>(0)
-
   const addTag = ()=>{
     let tagName = window.prompt('请输入新增标签名')
     //将新增标签名放到标签里，React要生成新的数组
     if(tagName !== null){
-      setTags([...tags, tagName])
+      setTags([...tags, {id:createId(), tagName:tagName}])
     }
   }
 
-  const toggle = (tag:string, index:number)=>{
-    props.onchange(index)
+  const toggle = (tag:{id:number,tagName:string})=>{
+    props.onchange(tag)
     console.log(selectedTag);
   }
 
   return(
     <Wrapper>
       <ul>
-        {tags.map((tag,index)=>
-          <li key={tag} onClick={(e)=>toggle(tag,index)} className={ selectedTag === index  ? 'selected':''}>{tag}</li>
+        {tags.map((tag)=>
+          <li key={tag.id} onClick={(e)=>toggle(tag)} className={ selectedTag.id === tag.id  ? 'selected':''}>{tag.tagName}</li>
         )}
       </ul>
       <button onClick={addTag}>新增标签</button>
