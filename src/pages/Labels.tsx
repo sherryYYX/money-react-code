@@ -4,6 +4,8 @@ import {useTag} from '../useTag';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
 import {Link} from 'react-router-dom';
+import {Button} from '../components/Button';
+import {Center} from '../components/Center';
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -24,21 +26,8 @@ const TagList = styled.ol`
   }
 `
 
-const Button = styled.button`
-  font-size: 18px;
-  padding: 8px 12px;
-  border: none;
-  background: green;
-  border-radius: 4px;
-  color: #fff;
-`
 
-const Center = styled.div`
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 64px;
-`
+
 
 const Labels= ()=>{
   const {tags, setTags} = useTag()
