@@ -8,15 +8,17 @@ try {
   console.log(e);
 }
 
+
 type Props  = {
-  name:String
-}
+  name?: string,
+} & React.SVGAttributes<SVGElement>
 
 const Icon = (props:Props)=>{
+  const {name, children, className, ...rest} = props
   return(
-    <svg>
-      <use xlinkHref={"#"+ props.name}></use>
+    <svg {...rest}>
+      {props.name && <use xlinkHref={'#' + props.name}/> }
     </svg>
-  )
-}
+  );
+};
 export default Icon

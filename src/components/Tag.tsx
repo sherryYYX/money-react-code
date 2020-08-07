@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTag} from '../useTag';
-import {useParams} from 'react-router-dom'
+import {useParams,useHistory} from 'react-router-dom'
 import Layout from './Layout';
 import Icon from './Icon';
 import {Button} from './Button';
@@ -45,15 +45,19 @@ const Label = styled.label`
 type Params ={
   id:string
 }
-const Tag:React.FC = (props)=>{
+const Tag:React.FC = ()=>{
   const {findTag, updateTag, deleteTag} = useTag()
   let {id} = useParams<Params>();
   const tag = findTag(parseInt(id))
+  const history = useHistory()
 
+  const goBack = ()=>{
+    history.goBack()
+  }
     return(
       <Layout>
         <TopBar>
-          <Icon name="left"/>
+          <Icon name="left" onClick={goBack} />
           <span>编辑标签</span>
         </TopBar>
         {tag ?  <div>

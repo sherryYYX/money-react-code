@@ -44,15 +44,9 @@ const TagsSection : React.FC<Props>=(props)=>{
 
   const selectedTag = props.value
 
-  const {tags, setTags} = useTag()
+  const {tags, addTag} = useTag()
 
-  const addTag = ()=>{
-    let tagName = window.prompt('请输入新增标签名')
-    //将新增标签名放到标签里，React要生成新的数组
-    if(tagName !== null){
-      setTags([...tags, {id:createId(), tagName:tagName}])
-    }
-  }
+
 
   const toggle = (tag:{id:number,tagName:string})=>{
     props.onchange(tag)

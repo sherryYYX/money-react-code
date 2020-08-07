@@ -13,6 +13,14 @@ const defaultTag = [
 const useTag = ()=>{
   const [tags, setTags] = useState<{id:number;tagName:string}[]>(defaultTag)
 
+  const addTag = ()=>{
+    let tagName = window.prompt('请输入新增标签名')
+    //将新增标签名放到标签里，React要生成新的数组
+    if(tagName !== null && tagName !== ''){
+      setTags([...tags, {id:createId(), tagName:tagName}])
+    }
+  }
+
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0]
 
   const findTagIndex = (id: number)=>{
@@ -27,28 +35,23 @@ const useTag = ()=>{
   }
 
   const updateTag = (id: number, obj: {name:string})=>{
-    //获取要改的 tag 的 index
-    const index = findTagIndex(id)
-    //深拷贝tags
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    //将拷贝后的数组里的index 删掉，替换成{id :id, name : obj.name}
-    tagsClone.splice(index, 1, {id:id, name: obj.name})
-    setTags(tagsClone)
+    setTags(tags.map((tag)=>{
+      if(tag.id === id){
+        return {id:id, tagName: obj.name}
+      }else {
+        return tag
+      }
+    }))
   }
 
   const deleteTag = (id: number)=>{
-    //获取要删除的 tag 的 index
-    const index = findTagIndex(id)
-    //深拷贝tags
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    //将拷贝后的数组里的index 删掉，替换成{id :id, name : obj.name}
-    tagsClone.splice(index, 1)
-    setTags(tagsClone)
+    setTags(tags.filter(tag => tag.id !== id ))
   }
 
   return{
     tags: tags,
     setTags: setTags,
+    addTag: addTag,
     findTag: findTag,
     updateTag: updateTag,
     deleteTag: deleteTag
