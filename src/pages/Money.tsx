@@ -5,7 +5,7 @@ import TagsStyle from './money/TagsSection';
 import NotesStyle from './money/NotesSection';
 import Category from './money/CategorySection';
 import NumberPad from './money/NumberPadSection';
-import {createId} from '../lib/creatId';
+import {useRecords} from '../hook/useRecord';
 
 const MyLayout = styled(Layout)`
   display:flex;
@@ -13,23 +13,28 @@ const MyLayout = styled(Layout)`
  
 `
 
+const defaultData ={
+  tag: {id:1, tagName:"衣服"},
+  note: '',
+  category: '-' as ('-'|'+'),
+  numberPad: 0
+}
+
 const Money= ()=>{
 
-  const [selected, setSelected] = useState({
-    tag: {id:1, tagName:"衣服"},
-    note: '',
-    category: '-' as ('-'|'+'),
-    numberPad: 0
-  })
+  const [selected, setSelected] = useState(defaultData)
+
+  const {addRecord} = useRecords()
+
+  const submit =()=>{
+    addRecord(selected)
+    window.alert('记账成功！')
+    setSelected(defaultData)
+  }
 
   return(
     <MyLayout>
-      {selected.tag.tagName}<hr/>
-      {selected.note}<hr/>
-      {selected.category}
-      <hr/>
-      {selected.numberPad}
-
+      {JSON.stringify(selected)}
       <TagsStyle value={selected.tag}
       onchange={(tag)=>{
         setSelected({
@@ -52,7 +57,7 @@ const Money= ()=>{
            })
          }} />
       <NumberPad value={selected.numberPad}
-                 onOk={()=>{console.log('ok');}}
+                 onOk={submit}
          onChange={(numberPad)=>{
            setSelected({
              ...selected,
