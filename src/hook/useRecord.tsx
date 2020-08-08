@@ -26,8 +26,14 @@ export const useRecords = ()=>{
   },[])
 
   let addRecord = (newRecord: newRecordItem)=>{
-    const record = {...newRecord, createAt: new Date().toISOString()}
-    setRecords([...records, record ])
+    if(newRecord.numberPad <= 0){
+      window.alert('请输入记账明细')
+      return false
+    }else {
+      const record = {...newRecord, createAt: new Date().toISOString()}
+      setRecords([...records, record ])
+    }
+    return true
   }
 
   useUpdate(()=>{

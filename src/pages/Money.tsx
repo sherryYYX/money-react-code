@@ -27,9 +27,10 @@ const Money= ()=>{
   const {addRecord} = useRecords()
 
   const submit =()=>{
-    addRecord(selected)
-    window.alert('记账成功！')
-    setSelected(defaultData)
+    if( addRecord(selected)){
+      window.alert('记账成功！')
+      setSelected(defaultData)
+    }
   }
 
   return(
