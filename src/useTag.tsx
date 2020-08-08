@@ -1,17 +1,28 @@
 
-// @ts-ignore
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {createId} from './lib/creatId';
-
-const defaultTag = [
-    {id:createId(),tagName:'衣服'},
-    {id:createId(),tagName:'食物'},
-    {id:createId(),tagName:'住房'},
-    {id:createId(),tagName:'交通'},
-]
+import {useUpdate} from './useUpdate';
 
 const useTag = ()=>{
-  const [tags, setTags] = useState<{id:number;tagName:string}[]>(defaultTag)
+  const [tags, setTags] = useState<{id:number;tagName:string}[]>([])
+
+  useEffect(() => {
+    let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]')
+    if(localTags.length === 0){
+      localTags = [
+        {id:createId(),tagName:'衣服'},
+        {id:createId(),tagName:'食物'},
+        {id:createId(),tagName:'住房'},
+        {id:createId(),tagName:'交通'},
+      ]
+    }
+    console.log('挂载执行');
+    setTags(localTags)
+  }, []); // 组件挂载时执行
+
+  useUpdate(()=>{
+    window.localStorage.setItem('tags', JSON.stringify(tags))
+  },[tags])
 
   const addTag = ()=>{
     let tagName = window.prompt('请输入新增标签名')
