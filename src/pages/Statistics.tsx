@@ -78,20 +78,20 @@ const Statistics= ()=>{
     let monthly=0;
     const now = day();
 
-    const newList=records.filter(r=>r.category===category);
-    for(let i=0;i<newList.length;i++){
-      if(now.isSame(day(newList[i].createAt),'day')){
-        daily+=newList[i].numberPad;
+    const categoryRecords=records.filter(r=>r.category===category);
+    for(let i=0;i<categoryRecords.length;i++){
+      if(now.isSame(day(categoryRecords[i].createAt),'day')){
+        daily+=categoryRecords[i].numberPad;
       }
-      if(now.isSame(day(newList[i].createAt),'month')){
-        monthly+=newList[i].numberPad;
+      if(now.isSame(day(categoryRecords[i].createAt),'month')){
+        monthly+=categoryRecords[i].numberPad;
       }
     }
     if(time==='day'){return daily.toFixed(2);}
     if(time==='month'){return monthly.toFixed(2);}
   }
 
-  const x = records.sort((a,b)=>{
+  const sortRecords = records.sort((a,b)=>{
     if(a.createAt===b.createAt) return 0
     if(a.createAt > b.createAt) return -1
     if(a.createAt < b.createAt) return 1
@@ -114,7 +114,7 @@ const Statistics= ()=>{
           <span>今日收入¥{result('+','day')}</span>
         </NowTime>
         <div>
-              {x.map((r,index)=>{
+              {sortRecords.map((r,index)=>{
                 return <Item key={index}>
                   <span className="tag">
                     {r.tag.tagName}

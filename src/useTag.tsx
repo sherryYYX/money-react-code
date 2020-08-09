@@ -1,5 +1,5 @@
 
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {createId} from './lib/creatId';
 import {useUpdate} from './useUpdate';
 
@@ -26,10 +26,10 @@ const useTag = ()=>{
   },[tags])
 
   const addTag = ()=>{
-    let tagName = window.prompt('请输入新增标签名')
+    let newTagName = window.prompt('请输入新增标签名')
     //将新增标签名放到标签里，React要生成新的数组
-    if(tagName !== null && tagName !== ''){
-      setTags([...tags, {id:createId(), tagName:tagName}])
+    if(newTagName !== null && newTagName !== ''){
+      setTags([...tags, {id:createId(), tagName:newTagName}])
     }
   }
 
