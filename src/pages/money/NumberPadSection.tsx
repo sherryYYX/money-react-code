@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 
 const Wrapper = styled.section`
   display:flex;
@@ -44,7 +44,15 @@ type Props = {
 
 const NumberPadSection:React.FC<Props> = (props)=>{
 
-  let output = props.value.toString()
+  let [output, setOutput] = useState(props.value.toString())
+
+  const _setOutput = (output: string) => {
+    let _Output: string;
+    _Output = output
+    setOutput(_Output);
+    props.onChange(parseFloat(_Output));
+  };
+
   const onClickButtonWrapper = (e:React.MouseEvent)=>{
     const text = (e.target as HTMLButtonElement).textContent;
     if(text === null){return;}
@@ -63,30 +71,31 @@ const NumberPadSection:React.FC<Props> = (props)=>{
       case '8':
       case '9':
         if(output === '0'){
-          props.onChange(parseFloat(text))
+          _setOutput(text)
         }else{
-          props.onChange(parseFloat(output+text))
+          _setOutput(output+text)
         }
         break;
       case '.':
         if(output.indexOf('.')>=0){
           return;
         }else {
-          props.onChange(parseFloat(output+text))
+          _setOutput(output+text)
         }
         break;
       case '删除':
         if(output.length === 1){
-          props.onChange(0)
+          _setOutput('0')
         }else{
-          props.onChange(parseFloat(output.slice(0,-1)))
+          _setOutput(output.slice(0,-1))
         }
         break;
       case '清空':
-        props.onChange(0)
+        _setOutput('0')
         break;
       case 'ok':
         props.onOk()
+        _setOutput('0')
         break;
     }
   }
