@@ -35,7 +35,6 @@ const Money= ()=>{
 
   return(
     <MyLayout>
-      {JSON.stringify(selected)}
       <TagsStyle value={selected.tag}
       onchange={(tag)=>{
         setSelected({
