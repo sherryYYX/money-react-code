@@ -1,7 +1,6 @@
-import React, { useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {useTag} from '../../useTag';
-import {createId} from '../../lib/creatId';
 
 const Wrapper = styled.div`
   display:flex;
@@ -50,7 +49,6 @@ const TagsSection : React.FC<Props>=(props)=>{
 
   const toggle = (tag:{id:number,tagName:string})=>{
     props.onchange(tag)
-    console.log(selectedTag);
   }
 
   return(
