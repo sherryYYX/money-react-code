@@ -1,6 +1,7 @@
 {
   "name": "morney",
   "version": "0.1.0",
+  "homepage": "http://sherryYYX.github.io/money-react-website",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
